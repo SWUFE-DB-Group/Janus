@@ -1,0 +1,33 @@
+# Janus
+
+> A Two-Level Character Validation Framework
+for Legacy CJK Encodings and Short-Texts
+
+
+This repo is mainly used for structural
+encoding validation for CJK (`StruVal-C`) in Rust. And `SemVal-S` can be found at [LGBench](https://github.com/SWUFE-DB-Group/LGBench).
+
+## How to benchmark it
+
+```shell
+cargo bench
+```
+
+## Performance reports
+
+Three real-world datasets are from public domain novels in CJK literary world.
+
+| Dataset  | Novel              | Original Title | Author          | Size   | Encoding |
+|-----------|-----------------------------|-----------------------|---------------------------|--------|-----------|
+| Dream-C   | Dream of the Red Chamber    | 红楼梦                | Cao Xueqin                | 1.75 MB | GB2312    |
+| Light-J   | Light and Darkness          | 暗と光（あんとひかり） | Natsume Sōseki            | 744 KB  | EUC-JP    |
+| Heart-K   | The Heartless               | 무정                  | Yi Kwang-su               | 555 KB  | EUC-KR    |
+
+Take `GB2312` for example, when running on a Linux machine with 64GB memory and Intel i9-12900K CPU, 
+the results are summerized:
+
+- [iconv](https://man7.org/linux/man-pages/man1/iconv.1.html): 0.63 GiB/s
+- [encoding_rs](https://github.com/hsivonen/encoding_rs): 0.57 GiB/s
+- `range`: 1.00 GiB/s
+- `lookup`: 3.30 GiB/s
+- `simd`: 8.62 GiB/s
