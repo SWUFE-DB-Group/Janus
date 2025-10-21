@@ -1,6 +1,6 @@
 use std::fs;
 
-use Janus::tools;
+use Janus::{euc_kr, tools};
 use Janus::{gb2312, gb18030};
 fn run_gb2312() {
     let bytes = fs::read("dream-gb2312.txt").unwrap();
@@ -38,7 +38,26 @@ fn run_gb18030() {
     println!("is_gb18030_simd: {:?}", result);
 }
 
+fn run_kr() {
+    let bytes = fs::read("heartless_euckr.txt").unwrap();
+
+    let result = euc_kr::is_kr_iconv(&bytes);
+    println!("is_kr_iconv: {:?}", result);
+
+    let result = euc_kr::is_kr_rs(&bytes);
+    println!("is_kr_rs: {:?}", result);
+
+    let table = euc_kr::build_kr_table();
+    let result = euc_kr::is_kr_lookup(&bytes, &table);
+    println!("is_kr_lookup: {:?}", result);
+
+    let i32_table = tools::build_i32_table_from_bool(&table);
+    let result = euc_kr::is_kr_simd(&bytes, &i32_table);
+    println!("is_kr_simd: {:?}", result);
+}
+
 fn main() {
     run_gb2312();
     run_gb18030();
+    run_kr();
 }

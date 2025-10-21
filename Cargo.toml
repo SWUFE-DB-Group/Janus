@@ -18,3 +18,8 @@ harness = false
 [[bench]]
 name = "gb18030"
 harness = false
+
+
+[[bench]]
+name = "kr"
+harness = false
