@@ -4,7 +4,7 @@ use Janus::{gb2312, tools};
 use std::fs;
 
 fn gb2312_benchmark(c: &mut Criterion) {
-    let bytes = fs::read("dream-gb2312.txt").unwrap();
+    let bytes = fs::read("dream_gb2312.txt").unwrap();
 
     let table = gb2312::build_gb2312_table();
 

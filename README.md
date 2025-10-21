@@ -13,15 +13,18 @@ encoding validation for CJK (`StruVal-C`) in Rust. And `SemVal-S` can be found a
 cargo bench
 ```
 
+If you want to evaluate a specific encodings, you can use `cargo bench -- <name>`, in which `<name>` can be `gb2312`,
+`gb18030`, `jp` and `kr`.
+
 ## Performance reports
 
 Three real-world datasets are from public domain novels in CJK literary world.
 
-| Dataset  | Novel              | Original Title | Author          | Size   | Encoding |
-|-----------|-----------------------------|----------------|---------------------------|--------|-----------|
-| Dream-C   | Dream of the Red Chamber    | 红楼梦            | Cao Xueqin                | 1.75 MB | GB2312    |
-| Light-J   | Light and Darkness          | 明暗             | Natsume Sōseki            | 744 KB  | EUC-JP    |
-| Heart-K   | The Heartless               | 무정             | Yi Kwang-su               | 555 KB  | EUC-KR    |
+| Dataset  | Novel              | Original Title | File                  | Size   | Encoding |
+|-----------|-----------------------------|----------------|-----------------------|--------|-----------|
+| Dream-C   | Dream of the Red Chamber    | 红楼梦            | `dream_gb2312.txt`    | 1.75 MB | GB2312    |
+| Light-J   | Light and Darkness          | 明暗             | `meian_eucjp.txt`     | 744 KB  | EUC-JP    |
+| Heart-K   | The Heartless               | 무정             | `heartless_euckr.txt` | 555 KB  | EUC-KR    |
 
 > [!NOTE]
 > Since the files are NOT encoded with UTF-8, your editor may display them with *mojibake*.

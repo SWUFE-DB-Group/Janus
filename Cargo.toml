@@ -19,6 +19,9 @@ harness = false
 name = "gb18030"
 harness = false
 
+[[bench]]
+name = "jp"
+harness = false
 
 [[bench]]
 name = "kr"

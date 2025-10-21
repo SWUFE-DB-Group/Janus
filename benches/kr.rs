@@ -24,7 +24,7 @@ fn kr_benchmark(c: &mut Criterion) {
         b.iter(|| euc_kr::is_kr_lookup(black_box(&bytes), black_box(&table)))
     });
 
-    c.bench_function("kr::is_kr_lookup", |b| {
+    c.bench_function("kr::is_kr_simd", |b| {
         b.iter(|| euc_kr::is_kr_simd(black_box(&bytes), black_box(&i32_table)))
     });
 }

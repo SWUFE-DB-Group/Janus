@@ -4,7 +4,7 @@ use Janus::gb18030::{is_gb18030_fsm, is_gb18030_iconv, is_gb18030_rs, is_gb18030
 use std::fs;
 
 fn gb18030_benchmark(c: &mut Criterion) {
-    let bytes = fs::read("dream-gb2312.txt").unwrap();
+    let bytes = fs::read("dream_gb2312.txt").unwrap();
 
     c.bench_function("gb18030::is_gb18030_iconv", |b| {
         b.iter(|| is_gb18030_iconv(black_box(&bytes)))
