@@ -342,6 +342,7 @@ pub fn is_gb2312_lookup(data: &[u8], table: &[bool; 32768]) -> bool {
     true
 }
 
+#[inline]
 fn fallback(slice: &[u8], table: &[i32; 32768]) -> i32 {
     let mut i = 0;
     while i < slice.len() {
