@@ -18,10 +18,13 @@ cargo bench
 Three real-world datasets are from public domain novels in CJK literary world.
 
 | Dataset  | Novel              | Original Title | Author          | Size   | Encoding |
-|-----------|-----------------------------|-----------------------|---------------------------|--------|-----------|
-| Dream-C   | Dream of the Red Chamber    | 红楼梦                | Cao Xueqin                | 1.75 MB | GB2312    |
-| Light-J   | Light and Darkness          | 暗と光（あんとひかり） | Natsume Sōseki            | 744 KB  | EUC-JP    |
-| Heart-K   | The Heartless               | 무정                  | Yi Kwang-su               | 555 KB  | EUC-KR    |
+|-----------|-----------------------------|----------------|---------------------------|--------|-----------|
+| Dream-C   | Dream of the Red Chamber    | 红楼梦            | Cao Xueqin                | 1.75 MB | GB2312    |
+| Light-J   | Light and Darkness          | 明暗             | Natsume Sōseki            | 744 KB  | EUC-JP    |
+| Heart-K   | The Heartless               | 무정             | Yi Kwang-su               | 555 KB  | EUC-KR    |
+
+> [!NOTE]
+> Since the files are NOT encoded with UTF-8, your editor may display them with *mojibake*.
 
 Take `GB2312` for example, when running on a Linux machine with 64GB memory and Intel i9-12900K CPU, 
 the results are summerized:
