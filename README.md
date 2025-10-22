@@ -10,10 +10,10 @@ encoding validation for CJK (`StruVal-C`) in Rust. And `SemVal-S` can be found a
 ## How to benchmark it
 
 ```shell
-cargo bench
+cargo bench 
 ```
 
-If you want to evaluate a specific encodings, you can use `cargo bench -- <name>`, in which `<name>` can be `gb2312`,
+If you want to evaluate a specific encoding, you can use `cargo bench -- <name>`, in which `<name>` can be `gb2312`,
 `gb18030`, `jp` and `kr`.
 
 ## Performance reports
@@ -32,8 +32,22 @@ Three real-world datasets are from public domain novels in CJK literary world.
 Take `GB2312` for example, when running on a Linux machine with 64GB memory and Intel i9-12900K CPU, 
 the results are summerized:
 
-- [iconv](https://man7.org/linux/man-pages/man1/iconv.1.html): 0.63 GiB/s
-- [encoding_rs](https://github.com/hsivonen/encoding_rs): 0.57 GiB/s
-- `range`: 1.00 GiB/s
-- `lookup`: 3.30 GiB/s
-- `simd`: 8.62 GiB/s
+- [iconv](https://man7.org/linux/man-pages/man1/iconv.1.html): 0.65 GiB/s
+- [encoding_rs](https://github.com/hsivonen/encoding_rs): 0.58 GiB/s
+- `range`: 1.04 GiB/s
+- `lookup`: 3.36 GiB/s
+- `simd`: 9.01 GiB/s
+
+### How to run benchmarks over random inputs
+
+First generate the random data:
+
+```shell
+python3 random-data-generate.py
+```
+
+By default, the benchmarks over random inputs are not enabled, and currently you have to add them manually. For example,
+
+```rust
+criterion_group!(benches, random_0_benchmark);
+```
